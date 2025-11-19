@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "concurrently \"bun run dev:backend\" \"bun run dev:frontend\"",
-    "dev:backend": "cd backend && cargo run",
+    "dev:backend": "cd backend && cargo watch -x run",
     "dev:frontend": "cd frontend && bun run dev"
   },
   "devDependencies": {
