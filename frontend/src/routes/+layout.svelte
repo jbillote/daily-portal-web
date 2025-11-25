@@ -49,54 +49,62 @@
 			class="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-16 is-drawer-open:w-64"
 		>
 			<ul class="menu w-full grow">
-				<li>
-					<button
-						class="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-						data-tip="Home"
-					>
-						<House />
-						<span
-							class="is-drawer-close:hidden"
-							>Home</span
+				<a href="/">
+					<li>
+						<button
+							class="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+							data-tip="Home"
 						>
-					</button>
-				</li>
-				<li>
-					<button
-						class="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-						data-tip="Timers"
-					>
-						<Clock3 />
-						<span
-							class="is-drawer-close:hidden"
-							>Timers</span
+							<House />
+							<span
+								class="is-drawer-close:hidden"
+								>Home</span
+							>
+						</button>
+					</li>
+				</a>
+				<a href="/timers">
+					<li>
+						<button
+							class="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+							data-tip="Timers"
 						>
-					</button>
-				</li>
-				<li>
-					<button
-						class="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-						data-tip="Uma Musume"
-					>
-						<ChessKnight />
-						<span
-							class="is-drawer-close:hidden"
-							>Uma Musume</span
+							<Clock3 />
+							<span
+								class="is-drawer-close:hidden"
+								>Timers</span
+							>
+						</button>
+					</li>
+				</a>
+				<a href="/uma">
+					<li>
+						<button
+							class="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+							data-tip="Uma Musume"
 						>
-					</button>
-				</li>
-				<li>
-					<button
-						class="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-						data-tip="学園アイドルマスター"
-					>
-						<Music />
-						<span
-							class="is-drawer-close:hidden"
-							>学園アイドルマスター</span
+							<ChessKnight />
+							<span
+								class="is-drawer-close:hidden"
+								>Uma Musume</span
+							>
+						</button>
+					</li>
+				</a>
+				<a href="/gkms">
+					<li>
+						<button
+							class="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+							data-tip="学園アイドルマスター"
 						>
-					</button>
-				</li>
+							<Music />
+							<span
+								class="is-drawer-close:hidden"
+								>学園アイドルマスター</span
+							>
+						</button>
+					</li>
+				</a>
 			</ul>
 		</div>
 	</div>
