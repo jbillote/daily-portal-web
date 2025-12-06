@@ -1,8 +1,15 @@
 <script lang="ts">
 	import "cally";
+	import { DateTime } from "luxon";
 	import { ChevronLeft, ChevronRight } from "@lucide/svelte";
 
-	let date = $state("Pick a date");
+	// Extra steps to get the start of the week since we want the start of
+	// the week to be Sunday and that can't be configured in Luxon
+	function startOfWeek(iso: string): DateTime {
+		return DateTime.fromISO(iso).endOf("week").minus({ week: 1 });
+	}
+
+	let date = $state(startOfWeek(DateTime.now().toISO()));
 </script>
 
 <div class="text-center">
@@ -15,7 +22,7 @@
 			id="cally1"
 			style="anchor-name:--cally1"
 		>
-			{date}
+			{date.toLocaleString()}
 		</button>
 		<div
 			popover
@@ -25,9 +32,12 @@
 		>
 			<calendar-date
 				class="cally"
+				firstDayOfWeek={0}
 				on:change={(e: Event) =>
-					(date = (e.target as HTMLInputElement)
-						.value)}
+					(date = startOfWeek(
+						(e.target as HTMLInputElement)
+							.value,
+					))}
 			>
 				<div slot="previous">
 					<ChevronLeft aria-label="Previous" />
