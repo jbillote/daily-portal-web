@@ -13,12 +13,11 @@
 </script>
 
 <div class="text-center">
-	<div>Uma Musume (EN)</div>
-
+	<div>Week of:</div>
 	<div>
 		<button
 			popovertarget="cally-popover1"
-			class="input input-border"
+			class="input input-border w-fit border-none shadow-none"
 			id="cally1"
 			style="anchor-name:--cally1"
 		>
@@ -47,6 +46,47 @@
 				</div>
 				<calendar-month></calendar-month>
 			</calendar-date>
+		</div>
+		<div>
+			<table
+				class="m-auto border-separate border-spacing-2 border-none"
+			>
+				<thead>
+					<tr>
+						<th>Date</th>
+						<th>Starting Fans</th>
+						<th>Ending Fans</th>
+					</tr>
+				</thead>
+				<tbody>
+					{#each { length: 7 } as _, offset}
+						<tr>
+							<td
+								>{date
+									.plus({
+										days: offset,
+									})
+									.toLocaleString()}</td
+							>
+							<td
+								><input
+									type="text"
+									placeholder="Start"
+									class="input"
+								/></td
+							>
+							<td
+								><input
+									type="text"
+									placeholder="End"
+									class="input"
+								/></td
+							>
+						</tr>
+					{/each}
+				</tbody>
+			</table>
+			<div>Total: 0</div>
 		</div>
 	</div>
 </div>
