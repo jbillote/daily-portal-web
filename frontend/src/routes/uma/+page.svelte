@@ -9,7 +9,20 @@
 		return DateTime.fromISO(iso).endOf("week").minus({ week: 1 });
 	}
 
+	function updateTotal() {
+		let newTotal = 0;
+
+		for (let day = 0; day < startValues.length; day++) {
+			newTotal += endValues[day] - startValues[day];
+		}
+
+		total = newTotal;
+	}
+
 	let date = $state(startOfWeek(DateTime.now().toISO()));
+	let total = $state(0);
+	let startValues: number[] = $state(Array(7).fill(0));
+	let endValues: number[] = $state(Array(7).fill(0));
 </script>
 
 <div class="text-center">
@@ -73,6 +86,23 @@
 									type="text"
 									placeholder="Start"
 									class="input"
+									id={`startDay${offset}`}
+									on:change={updateTotal}
+									bind:value={
+										() =>
+											startValues[
+												offset
+											].toString(),
+										(
+											v: string,
+										) =>
+											(startValues[
+												offset
+											] =
+												parseInt(
+													v,
+												))
+									}
 								/></td
 							>
 							<td
@@ -80,13 +110,31 @@
 									type="text"
 									placeholder="End"
 									class="input"
+									id={`endDay${offset}`}
+									on:change={updateTotal}
+									bind:value={
+										() =>
+											endValues[
+												offset
+											].toString(),
+										(
+											v: string,
+										) =>
+											(endValues[
+												offset
+											] =
+												parseInt(
+													v,
+												))
+									}
 								/></td
 							>
 						</tr>
 					{/each}
 				</tbody>
 			</table>
-			<div>Total: 0</div>
+			<div>Total: {total.toLocaleString()}</div>
+			<button class="btn w-fit">Update</button>
 		</div>
 	</div>
 </div>
