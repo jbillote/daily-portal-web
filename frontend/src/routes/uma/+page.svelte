@@ -13,7 +13,10 @@
 		let newTotal = 0;
 
 		for (let day = 0; day < startValues.length; day++) {
-			newTotal += endValues[day] - startValues[day];
+			newTotal += Math.max(
+				0,
+				endValues[day] - startValues[day],
+			);
 		}
 
 		total = newTotal;
