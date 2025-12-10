@@ -19,6 +19,16 @@
     total = newTotal;
   }
 
+  async function updateFans() {
+    let res = await fetch('http://localhost:3000/api/uma/fans', {
+      method: 'get'
+    });
+    const json = await res.json();
+    let result = JSON.stringify(json);
+
+    alert(result);
+  }
+
   let date = $state(startOfWeek(DateTime.now().toISO()));
   let total = $state(0);
   let startValues: number[] = $state(Array(7).fill(0));
@@ -100,7 +110,7 @@
         </tbody>
       </table>
       <div>Total: {total.toLocaleString()}</div>
-      <button class="btn w-fit">Update</button>
+      <button class="btn w-fit" on:click={updateFans}>Update</button>
     </div>
   </div>
 </div>
